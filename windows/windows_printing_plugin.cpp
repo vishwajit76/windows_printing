@@ -270,8 +270,11 @@ namespace {
 				orientation = std::get<std::string>(vo->second);
 			}
 			std::string st = printPdfFile(filePrint, printerName, pageNumber, orientation);
-			flutter::EncodableValue response(st.c_str());
-			result->Success(&response);
+			//flutter::EncodableValue response(st.c_str());
+			//result->Success(&response);
+
+			result->Success(flutter::EncodableValue(st.c_str()));
+
 		}
 		else {
 			result->NotImplemented();

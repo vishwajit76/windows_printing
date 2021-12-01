@@ -15,12 +15,12 @@ class WindowsPrinting {
   /// print PDF file
   /// Result: "1" success else failed
   static Future<String> printPdf(String filePath, String printerName,
-      {int pageNumber = 1, bool landscape = false}) async {
+      {String pageNumber = "ALL_PAGES", bool landscape = false}) async {
     final String res =
         await _channel.invokeMethod('printPdf', <String, dynamic>{
       'path': filePath,
       'printer': printerName,
-      'number': pageNumber != null ? (pageNumber - 1).toString() : "ALL_PAGES",
+      'number': pageNumber,
       'orientation': landscape ? "LANDSCAPE_PAGE" : "PORTRAIT",
     });
     return res;
